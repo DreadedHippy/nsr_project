@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
-import { Button } from "@/components/button";
 import { Field, Input } from "@/components/field";
+import { SubmitButton } from "@/components/submit-button";
 import { requireProfile } from "@/lib/auth";
 import { startVerificationAction, getPendingVerification } from "@/lib/actions/verification";
 
@@ -29,9 +29,9 @@ export default async function VerifyPage({
         <Field label="National Identification Number">
           <Input name="nin" inputMode="numeric" pattern="[0-9]{11}" maxLength={11} required />
         </Field>
-        <Button type="submit" className="mt-5">
+        <SubmitButton className="mt-5" pendingText="Verifying">
           Verify NIN
-        </Button>
+        </SubmitButton>
       </form>
     </div>
   );

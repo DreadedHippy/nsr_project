@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ClipboardCheck, FileDown, LayoutDashboard, ShieldCheck, Users } from "lucide-react";
 import type { Profile } from "@/lib/types";
 import { signOutAction } from "@/lib/actions/auth";
-import { Button } from "@/components/button";
+import { SubmitButton } from "@/components/submit-button";
 
 export function AppNav({ profile }: { profile: Profile }) {
   const links = [
@@ -41,9 +41,9 @@ export function AppNav({ profile }: { profile: Profile }) {
           <div className="text-muted-foreground">{profile.email}</div>
         </div>
         <form action={signOutAction}>
-          <Button variant="secondary" className="w-full" type="submit">
+          <SubmitButton variant="secondary" className="w-full" pendingText="Signing out">
             Sign out
-          </Button>
+          </SubmitButton>
         </form>
       </div>
     </aside>

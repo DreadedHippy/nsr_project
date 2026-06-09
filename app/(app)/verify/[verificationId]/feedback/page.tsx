@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { StatusBadge } from "@/components/status-badge";
-import { Button } from "@/components/button";
 import { Field, Input, Textarea } from "@/components/field";
+import { SubmitButton } from "@/components/submit-button";
 import { requireProfile } from "@/lib/auth";
 import { createSupabaseAdminClient } from "@/lib/supabase/server";
 import { submitFeedbackAction } from "@/lib/actions/verification";
@@ -66,7 +66,7 @@ export default async function FeedbackForVerificationPage({
           <Field label="Feedback comment">
             <Textarea name="comment" minLength={10} maxLength={1000} required />
           </Field>
-          <Button type="submit">Submit feedback</Button>
+          <SubmitButton pendingText="Submitting">Submit feedback</SubmitButton>
         </form>
       </div>
     </div>

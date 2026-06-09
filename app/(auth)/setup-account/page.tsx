@@ -1,6 +1,6 @@
 import { setupAccountAction } from "@/lib/actions/auth";
-import { Button } from "@/components/button";
 import { Field, Input } from "@/components/field";
+import { SubmitButton } from "@/components/submit-button";
 
 export default async function SetupAccountPage({
   searchParams
@@ -20,7 +20,7 @@ export default async function SetupAccountPage({
           <Field label="Password">
             <Input name="password" type="password" minLength={8} autoComplete="new-password" required />
           </Field>
-          <Button type="submit">Activate account</Button>
+          <SubmitButton pendingText="Activating">Activate account</SubmitButton>
         </form>
       </div>
     </main>

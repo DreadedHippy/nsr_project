@@ -1,6 +1,6 @@
 import { signInAction } from "@/lib/actions/auth";
-import { Button } from "@/components/button";
 import { Field, Input } from "@/components/field";
+import { SubmitButton } from "@/components/submit-button";
 
 export default function LoginPage({
   searchParams
@@ -20,7 +20,7 @@ export default function LoginPage({
           <Field label="Password">
             <Input name="password" type="password" autoComplete="current-password" required />
           </Field>
-          <Button type="submit">Sign in</Button>
+          <SubmitButton pendingText="Signing in">Sign in</SubmitButton>
         </form>
       </div>
     </main>

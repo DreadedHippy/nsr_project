@@ -1,6 +1,6 @@
 import { format } from "date-fns";
-import { Button } from "@/components/button";
 import { Field, Input } from "@/components/field";
+import { SubmitButton } from "@/components/submit-button";
 import { StatusBadge } from "@/components/status-badge";
 import { deactivateUserAction, inviteUserAction, resendInvitationAction } from "@/lib/actions/admin";
 import { requireProfile } from "@/lib/auth";
@@ -46,9 +46,9 @@ export default async function UsersPage({
           </select>
         </label>
         <div className="flex items-end">
-          <Button type="submit" className="w-full">
+          <SubmitButton className="w-full" pendingText="Inviting">
             Invite user
-          </Button>
+          </SubmitButton>
         </div>
       </form>
 
@@ -81,17 +81,17 @@ export default async function UsersPage({
                         <input type="hidden" name="email" value={user.email} />
                         <input type="hidden" name="full_name" value={user.full_name} />
                         <input type="hidden" name="role" value={user.role} />
-                        <Button variant="secondary" type="submit">
+                        <SubmitButton variant="secondary" pendingText="Resending">
                           Resend
-                        </Button>
+                        </SubmitButton>
                       </form>
                     ) : null}
                     {user.status !== "deactivated" ? (
                       <form action={deactivateUserAction}>
                         <input type="hidden" name="id" value={user.id} />
-                        <Button variant="danger" type="submit">
+                        <SubmitButton variant="danger" pendingText="Deactivating">
                           Deactivate
-                        </Button>
+                        </SubmitButton>
                       </form>
                     ) : null}
                   </div>

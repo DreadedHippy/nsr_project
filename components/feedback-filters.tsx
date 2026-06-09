@@ -1,6 +1,7 @@
 import { Search } from "lucide-react";
-import { Button, ButtonLink } from "@/components/button";
+import { ButtonLink } from "@/components/button";
 import { Input } from "@/components/field";
+import { SubmitButton } from "@/components/submit-button";
 import type { FeedbackFilters } from "@/lib/types";
 
 export function FeedbackFiltersForm({ filters, exportPath }: { filters: FeedbackFilters; exportPath: string }) {
@@ -21,9 +22,9 @@ export function FeedbackFiltersForm({ filters, exportPath }: { filters: Feedback
       <Input name="to" type="date" defaultValue={filters.to ?? ""} />
       <Input name="agent" placeholder="Agent name" defaultValue={filters.agent ?? ""} />
       <div className="flex gap-2">
-        <Button type="submit" className="px-3" title="Search">
+        <SubmitButton className="px-3" title="Search">
           <Search className="h-4 w-4" />
-        </Button>
+        </SubmitButton>
         <ButtonLink href={`${exportPath}?${params.toString()}`} variant="secondary">
           CSV
         </ButtonLink>

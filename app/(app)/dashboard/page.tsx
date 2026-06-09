@@ -1,5 +1,6 @@
 import { ClipboardCheck, ShieldCheck, Users } from "lucide-react";
 import { ButtonLink } from "@/components/button";
+import { LoadingLinkButton } from "@/components/loading-link-button";
 import { requireAnyProfile } from "@/lib/auth";
 import { createSupabaseAdminClient } from "@/lib/supabase/server";
 import { getPendingVerification } from "@/lib/actions/verification";
@@ -29,7 +30,9 @@ export default async function DashboardPage() {
             {pending ? "Complete feedback" : "Start verification"}
           </ButtonLink>
         ) : (
-          <ButtonLink href="/admin/users">Manage users</ButtonLink>
+          <LoadingLinkButton href="/admin/users" pendingText="Opening users">
+            Manage users
+          </LoadingLinkButton>
         )}
       </div>
 
