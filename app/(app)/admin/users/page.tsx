@@ -31,7 +31,7 @@ export default async function UsersPage({
         </div>
       ) : null}
 
-      <form action={inviteUserAction} className="mb-6 grid gap-4 rounded-lg border border-border bg-white p-5 shadow-sm md:grid-cols-4">
+      <form action={inviteUserAction} className="mb-6 grid gap-4 rounded-lg border border-border bg-white p-4 shadow-sm sm:grid-cols-2 lg:grid-cols-4 lg:p-5">
         <Field label="Full name">
           <Input name="full_name" required />
         </Field>
@@ -45,15 +45,15 @@ export default async function UsersPage({
             <option value="admin">Administrator</option>
           </select>
         </label>
-        <div className="flex items-end">
+        <div className="flex items-end sm:col-span-2 lg:col-span-1">
           <SubmitButton className="w-full" pendingText="Inviting">
             Invite user
           </SubmitButton>
         </div>
       </form>
 
-      <div className="overflow-hidden rounded-lg border border-border bg-white shadow-sm">
-        <table className="w-full text-left text-sm">
+      <div className="overflow-x-auto rounded-lg border border-border bg-white shadow-sm">
+        <table className="min-w-[780px] w-full text-left text-sm">
           <thead className="bg-muted text-xs uppercase text-muted-foreground">
             <tr>
               <th className="px-4 py-3">Name</th>
@@ -75,7 +75,7 @@ export default async function UsersPage({
                 </td>
                 <td className="px-4 py-3">{format(new Date(user.created_at), "yyyy-MM-dd")}</td>
                 <td className="px-4 py-3">
-                  <div className="flex gap-2">
+                  <div className="flex flex-wrap gap-2">
                     {user.status === "invited" ? (
                       <form action={resendInvitationAction}>
                         <input type="hidden" name="email" value={user.email} />

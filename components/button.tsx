@@ -3,7 +3,7 @@ import type { ButtonHTMLAttributes, AnchorHTMLAttributes } from "react";
 import Link from "next/link";
 
 const styles =
-  "focus-ring inline-flex h-10 items-center justify-center gap-2 rounded-md border px-4 text-sm font-medium transition disabled:cursor-not-allowed disabled:opacity-60";
+  "focus-ring inline-flex min-h-10 items-center justify-center gap-2 rounded-md border px-4 py-2 text-center text-sm font-medium transition disabled:cursor-not-allowed disabled:opacity-60";
 
 export function Button({
   className,

@@ -1,47 +1,39 @@
-import Link from "next/link";
-import { ClipboardCheck, FileDown, LayoutDashboard, ShieldCheck, Users } from "lucide-react";
 import type { Profile } from "@/lib/types";
 import { signOutAction } from "@/lib/actions/auth";
 import { SubmitButton } from "@/components/submit-button";
+import { NavLink } from "@/components/nav-link";
 
 export function AppNav({ profile }: { profile: Profile }) {
   const links = [
-    { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
-    { href: "/verify", label: "Verify", icon: ShieldCheck },
-    { href: "/feedback", label: "Feedback", icon: ClipboardCheck },
+    { href: "/dashboard", label: "Dashboard", icon: "dashboard" as const },
+    { href: "/verify", label: "Verify", icon: "verify" as const },
+    { href: "/feedback", label: "Feedback", icon: "feedback" as const },
     ...(profile.role === "admin"
       ? [
-          { href: "/admin/users", label: "Users", icon: Users },
-          { href: "/admin/feedback", label: "Export", icon: FileDown }
+          { href: "/admin/users", label: "Users", icon: "users" as const },
+          { href: "/admin/feedback", label: "Export", icon: "export" as const }
         ]
       : [])
   ];
 
   return (
-    <aside className="flex min-h-screen w-64 flex-col border-r border-border bg-white px-4 py-5">
-      <div className="mb-8">
-        <div className="text-lg font-semibold">NSR Verification</div>
+    <aside className="sticky top-0 z-20 flex w-full flex-col border-b border-border bg-white px-4 py-3 lg:min-h-screen lg:w-64 lg:border-b-0 lg:border-r lg:px-4 lg:py-5">
+      <div className="mb-3 flex items-center justify-between gap-3 lg:mb-8 lg:block">
+        <div className="text-base font-semibold sm:text-lg">NSR Verification</div>
         <div className="mt-1 text-xs uppercase tracking-wide text-muted-foreground">{profile.role}</div>
       </div>
-      <nav className="grid gap-1">
+      <nav className="-mx-1 flex gap-1 overflow-x-auto pb-1 lg:mx-0 lg:grid lg:overflow-visible lg:pb-0">
         {links.map((item) => (
-          <Link
-            key={item.href}
-            href={item.href}
-            className="focus-ring flex h-10 items-center gap-3 rounded-md px-3 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground"
-          >
-            <item.icon className="h-4 w-4" />
-            {item.label}
-          </Link>
+          <NavLink key={item.href} href={item.href} label={item.label} icon={item.icon} />
         ))}
       </nav>
-      <div className="mt-auto border-t border-border pt-4">
-        <div className="mb-3 text-sm">
+      <div className="mt-3 border-t border-border pt-3 lg:mt-auto lg:pt-4">
+        <div className="mb-3 hidden text-sm lg:block">
           <div className="font-medium">{profile.full_name}</div>
-          <div className="text-muted-foreground">{profile.email}</div>
+          <div className="break-all text-muted-foreground">{profile.email}</div>
         </div>
         <form action={signOutAction}>
-          <SubmitButton variant="secondary" className="w-full" pendingText="Signing out">
+          <SubmitButton variant="secondary" className="w-full sm:w-auto lg:w-full" pendingText="Signing out">
             Sign out
           </SubmitButton>
         </form>

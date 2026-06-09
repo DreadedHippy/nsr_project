@@ -4,8 +4,8 @@ import { getAgentName, type FeedbackRow } from "@/lib/feedback-row";
 
 export function FeedbackTable({ rows }: { rows: FeedbackRow[] }) {
   return (
-    <div className="overflow-hidden rounded-lg border border-border bg-white shadow-sm">
-      <table className="w-full border-collapse text-left text-sm">
+    <div className="overflow-x-auto rounded-lg border border-border bg-white shadow-sm">
+      <table className="min-w-[860px] w-full border-collapse text-left text-sm">
         <thead className="bg-muted text-xs uppercase text-muted-foreground">
           <tr>
             <th className="px-4 py-3">Social Register ID</th>

@@ -25,11 +25,11 @@ export default async function VerifyPage({
       {params.warning ? (
         <div className="mt-5 rounded-md bg-amber-50 p-3 text-sm text-warning">NIMC service unavailable: {params.warning}</div>
       ) : null}
-      <form action={startVerificationAction} className="mt-6 rounded-lg border border-border bg-white p-5 shadow-sm">
+      <form action={startVerificationAction} className="mt-6 rounded-lg border border-border bg-white p-4 shadow-sm sm:p-5">
         <Field label="National Identification Number">
           <Input name="nin" inputMode="numeric" pattern="[0-9]{11}" maxLength={11} required />
         </Field>
-        <SubmitButton className="mt-5" pendingText="Verifying">
+        <SubmitButton className="mt-5 w-full sm:w-auto" pendingText="Verifying">
           Verify NIN
         </SubmitButton>
       </form>

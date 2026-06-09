@@ -32,8 +32,8 @@ export default async function FeedbackForVerificationPage({
     <div className="max-w-2xl">
       <h1 className="text-2xl font-semibold">Submit feedback</h1>
       <p className="mt-1 text-sm text-muted-foreground">This feedback must be completed before the next verification.</p>
-      <div className="mt-6 rounded-lg border border-border bg-white p-5 shadow-sm">
-        <div className="grid gap-4 border-b border-border pb-5 md:grid-cols-3">
+      <div className="mt-6 rounded-lg border border-border bg-white p-4 shadow-sm sm:p-5">
+        <div className="grid gap-4 border-b border-border pb-5 sm:grid-cols-3">
           <div>
             <div className="text-xs text-muted-foreground">NIN</div>
             <div className="mt-1 font-medium">{verification.nin_masked}</div>
@@ -66,7 +66,7 @@ export default async function FeedbackForVerificationPage({
           <Field label="Feedback comment">
             <Textarea name="comment" minLength={10} maxLength={1000} required />
           </Field>
-          <SubmitButton pendingText="Submitting">Submit feedback</SubmitButton>
+          <SubmitButton className="w-full sm:w-auto" pendingText="Submitting">Submit feedback</SubmitButton>
         </form>
       </div>
     </div>

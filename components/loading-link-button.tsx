@@ -6,7 +6,7 @@ import { useTransition } from "react";
 import { clsx } from "clsx";
 
 const styles =
-  "focus-ring inline-flex h-10 items-center justify-center gap-2 rounded-md border px-4 text-sm font-medium transition disabled:cursor-wait disabled:opacity-70";
+  "focus-ring inline-flex min-h-10 items-center justify-center gap-2 rounded-md border px-4 py-2 text-center text-sm font-medium transition disabled:cursor-wait disabled:opacity-70";
 
 export function LoadingLinkButton({
   href,

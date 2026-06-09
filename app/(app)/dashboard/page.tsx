@@ -20,17 +20,17 @@ export default async function DashboardPage() {
 
   return (
     <div>
-      <div className="flex items-start justify-between gap-4">
+      <div className="flex flex-col items-stretch gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <h1 className="text-2xl font-semibold">Dashboard</h1>
           <p className="mt-1 text-sm text-muted-foreground">Operational overview for identity verification work.</p>
         </div>
         {profile.role === "agent" ? (
-          <ButtonLink href={pending ? `/verify/${pending.id}/feedback` : "/verify"}>
+          <ButtonLink href={pending ? `/verify/${pending.id}/feedback` : "/verify"} className="w-full sm:w-auto">
             {pending ? "Complete feedback" : "Start verification"}
           </ButtonLink>
         ) : (
-          <LoadingLinkButton href="/admin/users" pendingText="Opening users">
+          <LoadingLinkButton href="/admin/users" pendingText="Opening users" className="w-full sm:w-auto">
             Manage users
           </LoadingLinkButton>
         )}
@@ -42,7 +42,7 @@ export default async function DashboardPage() {
         </div>
       ) : null}
 
-      <div className="mt-6 grid gap-4 md:grid-cols-3">
+      <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
         <Metric icon={ClipboardCheck} label="Feedback records" value={feedbackCount.count ?? 0} />
         <Metric icon={ShieldCheck} label="Current role" value={profile.role} />
         <Metric icon={Users} label="System users" value={profile.role === "admin" ? usersCount.count ?? 0 : "Restricted"} />
@@ -61,10 +61,10 @@ function Metric({
   value: string | number;
 }) {
   return (
-    <div className="rounded-lg border border-border bg-white p-5 shadow-sm">
+    <div className="rounded-lg border border-border bg-white p-4 shadow-sm sm:p-5">
       <Icon className="h-5 w-5 text-primary" />
       <div className="mt-4 text-sm text-muted-foreground">{label}</div>
-      <div className="mt-1 text-2xl font-semibold capitalize">{value}</div>
+      <div className="mt-1 break-words text-2xl font-semibold capitalize">{value}</div>
     </div>
   );
 }
